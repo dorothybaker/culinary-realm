@@ -12,11 +12,16 @@ const FoodPage = () => {
 
   const query = searchParams.has("query");
   const category = searchParams.has("category");
+  let universal;
+  if (query === false && category === false) {
+    universal = true;
+  }
 
   return (
     <div className="border-t py-2">
       {query && <SearchFeed />}
       {category && <Foods />}
+      {universal && <Foods />}
     </div>
   );
 };
