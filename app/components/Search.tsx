@@ -16,7 +16,7 @@ export default function Search() {
   };
 
   return (
-    <div className="flex justify-center items-center w-full mx-auto px-3 sm:gap-3 gap-2 my-5">
+    <div className="flex justify-center items-center w-full mx-auto px-3 sm:gap-3 gap-2 my-7">
       <SelectComponent />
 
       <h1 className="font-semibold">OR</h1>
