@@ -4,7 +4,7 @@ import { useSearchParams } from "next/navigation";
 import SearchFeed from "./SearchFeed";
 import Foods from "./Foods";
 
-export default function Home() {
+export default function MainPage() {
   const searchParams = useSearchParams();
 
   const query = searchParams.has("query");
