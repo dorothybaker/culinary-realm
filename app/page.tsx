@@ -7,20 +7,26 @@ import Search from "./components/Search";
 import { Suspense } from "react";
 import Loading from "./components/Loading";
 
-export default function Home() {
+const FoodPage = () => {
   const searchParams = useSearchParams();
 
   const query = searchParams.has("query");
   const category = searchParams.has("category");
 
   return (
+    <div className="border-t py-2">
+      {query && <SearchFeed />}
+      {category && <Foods />}
+    </div>
+  );
+};
+
+export default function Home() {
+  return (
     <div className="max-w-7xl mb-7 mx-auto">
+      <Search />
       <Suspense fallback={<Loading />}>
-        <Search />
-        <div className="border-t py-2">
-          {query && <SearchFeed />}
-          {category && <Foods />}
-        </div>
+        <FoodPage />
       </Suspense>
     </div>
   );
