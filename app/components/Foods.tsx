@@ -3,7 +3,7 @@
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import Food from "./Food";
-import Loading from "./Loading";
+import LoadingFoods from "./LoadingFoods";
 
 export default function Foods() {
   const [foods, setFoods] = useState<any>(null);
@@ -34,7 +34,7 @@ export default function Foods() {
   }, [category]);
 
   if (!foods) {
-    return <Loading />;
+    return <LoadingFoods />;
   }
 
   return (

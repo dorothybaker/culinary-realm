@@ -1,6 +1,6 @@
 "use client";
 
-import Loading from "@/app/components/Loading";
+import LoadingFood from "@/app/components/LoadingFood";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FaArrowLeft } from "react-icons/fa";
@@ -28,7 +28,7 @@ export default function Page({ params }: { params: { id: any } }) {
   }, [params.id]);
 
   if (!foodDetail) {
-    return <Loading />;
+    return <LoadingFood />;
   }
 
   const ingredients = Object.keys(foodDetail?.meals[0])
@@ -36,12 +36,12 @@ export default function Page({ params }: { params: { id: any } }) {
     .map((key) => foodDetail?.meals[0][key]);
 
   return (
-    <div className="my-7 md:px-5 px-3">
+    <div className="my-7 md:px-5 px-3 max-w-7xl mx-auto">
       <div
-        className="font-semibold flex gap-2 items-center text-primary cursor-pointer"
+        className="font-semibold flex gap-1 text-sm items-center text-primary cursor-pointer mb-2"
         onClick={() => router.back()}
       >
-        <FaArrowLeft />
+        <FaArrowLeft size={12} />
         <p>Back</p>
       </div>
       {foodDetail?.meals?.map((detail: any, id: any) => (
@@ -58,7 +58,7 @@ export default function Page({ params }: { params: { id: any } }) {
                 className="object-contain rounded-md max-h-[392px]"
               />
             </div>
-            <div className="font-medium flex flex-col gap-2 text-lg">
+            <div className="font-medium flex flex-col gap-2 text-[17px]">
               <h3>
                 <span className="font-semibold">Category:</span>{" "}
                 {detail?.strCategory}
@@ -93,7 +93,7 @@ export default function Page({ params }: { params: { id: any } }) {
             <h3 className="font-semibold text-xl">Instructions:</h3>
             <div
               dangerouslySetInnerHTML={{ __html: detail?.strInstructions }}
-              className="tracking-wide leading-relaxed text-lg"
+              className="tracking-wide leading-relaxed text-[17px]"
             />
           </div>
           {detail?.strYoutube && (

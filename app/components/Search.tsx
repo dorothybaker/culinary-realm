@@ -20,7 +20,7 @@ export default function Search() {
       <SelectComponent />
 
       <h1 className="font-semibold">OR</h1>
-      <div className="rounded-md flex">
+      <div className="rounded-md flex min-w-[8rem]">
         <input
           type="text"
           className="w-full sm:w-[400px] outline-none focus:outline-none border px-2 rounded-l-md"

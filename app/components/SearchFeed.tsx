@@ -3,7 +3,7 @@
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import Food from "./Food";
-import Loading from "./Loading";
+import LoadingFoods from "./LoadingFoods";
 
 export default function SearchFeed() {
   const [foods, setFoods] = useState<any>(null);
@@ -32,14 +32,22 @@ export default function SearchFeed() {
   }, [query]);
 
   if (!foods) {
-    return <Loading />;
+    return <LoadingFoods />;
   }
 
-  return (
-    <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-3 md:px-4 px-3 place-content-center h-full">
-      {foods?.meals?.map((food: any, id: any) => (
-        <Food key={id} food={food} />
-      ))}
-    </div>
-  );
+  if (foods?.meals !== null) {
+    return (
+      <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-3 md:px-4 px-3 place-content-center h-full">
+        {foods?.meals?.map((food: any, id: any) => (
+          <Food key={id} food={food} />
+        ))}
+      </div>
+    );
+  } else {
+    return (
+      <div className="my-5 flex justify-center px-3 items-center font-bold text-primary/70 text-2xl">
+        Sorry, {query} is not available at the moment!
+      </div>
+    );
+  }
 }

@@ -41,23 +41,31 @@ export default function SelectComponent() {
   };
 
   return (
-    <select
-      className="flex h-10 w-[8rem] items-center justify-between rounded-md border border-input bg-background px-3 py-2 outline-none"
-      value={value}
-      onChange={(e) => {
-        setValue(e.target.value);
-        handleChange(e.target.value);
-      }}
-    >
-      <option disabled selected className="text-sm font-semibold line-clamp-1">
-        Select a category
-      </option>
-
-      {categories?.meals?.map((category: any, id: any) => (
-        <option value={category?.strCategory} key={id}>
-          {category?.strCategory}
-        </option>
-      ))}
-    </select>
+    <div className="border rounded-md h-10 flex items-center justify-center px-2">
+      <select
+        className="outline-none font-semibold border-none max-w-[7.5rem] h-full flex items-center"
+        value={value}
+        onChange={(e) => {
+          setValue(e.target.value);
+          handleChange(e.target.value);
+        }}
+        defaultValue="Miscellaneous"
+      >
+        <optgroup label="Categories" className="text-base font-semibold">
+          <option value="Miscellaneous" className="text-sm h-[2em] font-medium">
+            All categories
+          </option>
+          {categories?.meals?.map((category: any, id: any) => (
+            <option
+              value={category?.strCategory}
+              key={id}
+              className="text-sm h-[2em] font-medium"
+            >
+              {category?.strCategory}
+            </option>
+          ))}
+        </optgroup>
+      </select>
+    </div>
   );
 }
