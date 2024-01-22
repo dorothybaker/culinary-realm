@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import LoadingLatest from "./LoadingLatest";
 
 export default function Latest() {
   const [categories, setCategories] = useState<any>(null);
@@ -21,6 +22,10 @@ export default function Latest() {
   useEffect(() => {
     fetchFullCategories();
   }, []);
+
+  if (!categories) {
+    return <LoadingLatest />;
+  }
 
   return (
     <div className="border-t md:px-4 px-3">
