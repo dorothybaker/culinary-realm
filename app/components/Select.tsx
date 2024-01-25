@@ -43,7 +43,7 @@ export default function SelectComponent() {
   return (
     <div className="border rounded-md h-10 flex items-center justify-center px-2">
       <select
-        className="outline-none font-semibold border-none max-w-[7.5rem] h-full flex items-center"
+        className="outline-none font-semibold border-none max-w-[7.5rem] h-full flex items-center bg-transparent"
         value={value}
         onChange={(e) => {
           setValue(e.target.value);
